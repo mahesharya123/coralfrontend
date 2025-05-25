@@ -31,13 +31,23 @@ function App() {
 // Header Component
 const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+   
+
+// Toggle Services submenu manually in mobile
+const handleServicesClick = (e) => {
+  e.preventDefault(); // Prevent page navigation
+  setIsServicesOpen(!isServicesOpen);
+};
+
   return (
     <>
       <div className="header-top">
         <div className="container">
           <div className="d-flex justify-content-between text-light">
             <div> 
-                 <img src={calllogo} alt="Hotel Logo" height="16"  style={{marginRight:'4px'}}/>
+                 <img src={calllogo} alt="call Logo" height="16"  style={{marginRight:'4px'}}/>
               +123 456 7890
               </div>
             <div>
@@ -57,31 +67,36 @@ const Header = () => {
       <img src={logo} alt="Hotel Logo" height="40" />
     </a>
   </div>
-    <nav className="navigation-menu">
+       
+    <button className="navbar-toggler" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+  ☰
+</button>
+
+<nav className={`navigation-menu ${isMenuOpen ? 'active' : ''}`}>
       <ul className="navbar-nav">
         <li className="nav-item"><a href="/" className="nav-link">Home</a></li>
         
         <li 
-          className="nav-item dropdown"
-          onMouseEnter={() => setIsServicesOpen(true)}
-          onMouseLeave={() => setIsServicesOpen(false)}
-          onClick={() => setIsServicesOpen(!isServicesOpen)}
-        >
-          <a 
-            href="/services" 
-            className="nav-link dropdown-toggle" 
-            role="button" 
-            aria-haspopup="true" 
-            aria-expanded={isServicesOpen}
-          >
-            Services
-          </a>
-          <ul className={`dropdown-menu ${isServicesOpen ? 'show' : ''}`}>
-            <li><a className="dropdown-item" href="/rooms">Rooms</a></li>
-            <li><a className="dropdown-item" href="/party-hall">Party Hall</a></li>
-            <li><a className="dropdown-item" href="/restaurants">Restaurants</a></li>
-          </ul>
-        </li>
+  className={`nav-item dropdown ${isServicesOpen ? 'open' : ''}`}
+  onMouseEnter={() => window.innerWidth > 768 && setIsServicesOpen(true)}
+  onMouseLeave={() => window.innerWidth > 768 && setIsServicesOpen(false)}
+>
+  <a
+    href="/"
+    className="nav-link dropdown-toggle"
+    onClick={handleServicesClick}
+    aria-haspopup="true"
+    aria-expanded={isServicesOpen}
+  >
+    Services
+  </a>
+  <ul className={`dropdown-menu`}>
+    <li><a className="dropdown-item" href="/rooms">Rooms</a></li>
+    <li><a className="dropdown-item" href="/party-hall">Party Hall</a></li>
+    <li><a className="dropdown-item" href="/restaurants">Restaurants</a></li>
+  </ul>
+</li>
+
 
         <li className="nav-item"><a href="/" className="nav-link">About</a></li>
         <li className="nav-item"><a href="/" className="nav-link">Contact</a></li>
@@ -91,6 +106,7 @@ const Header = () => {
           </div>
         </nav>
       </header>
+     
     </>
   );
 };

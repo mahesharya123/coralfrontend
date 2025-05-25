@@ -126,161 +126,157 @@ body {
     margin-bottom: 20px;
   }
 }
+/* Navbar Container */
+.navbar {
+  padding: 1rem 0;
+  position: relative;
+}
+
 .navlist {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1rem 0;
 }
 
-.navbar-nav {
+/* Navigation Menu */
+.navigation-menu {
   display: flex;
-  gap: 2rem; /* Space between menu items */
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  gap: 1rem;
 }
 
-.nav-item {
-  display: inline-block;
+.navigation-menu .navbar-nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  gap: 1rem;
 }
 
 .nav-link {
-  text-decoration: none;
   color: #333;
-  font-weight: 700;
-  transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 .nav-link:hover {
-  color: #f7c411; /* Your theme color */
+  color: #007bff;
 }
 
-/* Optional: Add mobile responsiveness */
-@media (max-width: 768px) {
-  .navlist {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .navbar-nav {
-    margin-top: 1rem;
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .navigation-menu {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .navbar-nav {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-
-/* Hamburger Menu Styles */
-.navbar-toggle {
+/* Dropdown Menu */
+.dropdown-menu {
   display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  list-style: none;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 160px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+/* Hamburger Icon */
+.navbar-toggler {
+  display: none;
+  font-size: 1.5rem;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  z-index: 1000;
+  color: #333;
 }
 
-.hamburger {
-  width: 30px;
-  height: 3px;
-  background: #333;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.hamburger::before,
-.hamburger::after {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 3px;
-  background: #333;
-  transition: all 0.3s ease;
-}
-
-.hamburger::before {
-  transform: translateY(-8px);
-}
-
-.hamburger::after {
-  transform: translateY(8px);
-}
-
-/* Active State */
-.navbar-toggle.active .hamburger {
-  background: transparent;
-}
-
-.navbar-toggle.active .hamburger::before {
-  transform: rotate(45deg);
-}
-
-.navbar-toggle.active .hamburger::after {
-  transform: rotate(-45deg);
-}
-
-/* Mobile Navigation */
+/* Media Queries for Mobile */
 @media (max-width: 768px) {
-  .navbar-toggle {
+  .navbar-toggler {
     display: block;
   }
 
   .navigation-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    padding: 60px 20px 20px;
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    border-top: 1px solid #ccc;
     z-index: 999;
   }
 
   .navigation-menu.active {
-    right: 0;
+    display: flex;
   }
 
   .navbar-nav {
     flex-direction: column;
-  }
-
-  .nav-item {
-    margin: 10px 0;
+    align-items: flex-start;
   }
 
   .dropdown-menu {
     position: static;
     box-shadow: none;
-    background: transparent;
-    display: none;
-    padding-left: 20px;
+    margin-left: 1rem;
   }
 
-  .dropdown-menu.show {
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+}
+
+/* Existing styles stay the same... */
+
+/* --- Additional Styles for Mobile Dropdown Inside Hamburger --- */
+
+@media (max-width: 768px) {
+  /* Parent Services dropdown item */
+  .nav-item.dropdown {
+    position: relative;
+  }
+
+  /* Make sub-menu visible as nested when parent is clicked */
+  .nav-item.dropdown .dropdown-menu {
+    display: none;
+    position: relative;
+    top: auto;
+    left: auto;
+    background-color: #f8f9fa;
+    box-shadow: none;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Show dropdown on click using class */
+  .nav-item.dropdown.open .dropdown-menu {
     display: block;
   }
 
-  .dropdown-toggle::after {
-    float: right;
-    margin-top: 8px;
+  .dropdown-item {
+    padding: 0.4rem 1rem;
+    display: block;
+    width: 100%;
   }
 }
