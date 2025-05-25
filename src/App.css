@@ -1,0 +1,286 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+:root {
+  --primary-color: rgb(91, 165, 41);
+  --dark-color: #131e2a;
+  --text-color: #4a4a4a;
+}
+
+body {
+  font-family: 'Karla', sans-serif;
+  color: var(--text-color);
+}
+
+.header-top {
+  background: var(--dark-color);
+  padding: 8px 0;
+  font-size: 0.9rem;
+}
+
+.main-header {
+  padding: 8px 0;
+      
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-nav .nav-link {
+ font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    
+    overflow-x: hidden;
+ color: var(--dark-color);
+  text-transform: uppercase;
+  margin: 0 15px;
+}
+
+
+
+.booking-form {
+ 
+  padding: 30px;
+  border-radius: 4px;
+  color: #FFFF;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-control {
+  border: none;
+  border-bottom: 2px solid #ddd;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+.btn-primar {
+  background-color: rgba(17, 165, 195, 0.329);
+  color: var(--dark-color);
+  border: 1px solid rgb(224, 220, 220);
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-weight: 700;
+}
+.btn-primar:hover{
+  background-color: rgb(172, 214, 155);
+}
+
+.room-card {
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.room-card:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 40px;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 500px;
+  }
+  
+  .booking-form {
+    margin-top: -50px;
+  }
+  
+  .room-card {
+    margin-bottom: 20px;
+  }
+}
+.navlist {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 2rem; /* Space between menu items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #f7c411; /* Your theme color */
+}
+
+/* Optional: Add mobile responsiveness */
+@media (max-width: 768px) {
+  .navlist {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .navbar-nav {
+    margin-top: 1rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation-menu {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .navbar-nav {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+/* Hamburger Menu Styles */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 1000;
+}
+
+.hamburger {
+  width: 30px;
+  height: 3px;
+  background: #333;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #333;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before {
+  transform: translateY(-8px);
+}
+
+.hamburger::after {
+  transform: translateY(8px);
+}
+
+/* Active State */
+.navbar-toggle.active .hamburger {
+  background: transparent;
+}
+
+.navbar-toggle.active .hamburger::before {
+  transform: rotate(45deg);
+}
+
+.navbar-toggle.active .hamburger::after {
+  transform: rotate(-45deg);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navigation-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    padding: 60px 20px 20px;
+    z-index: 999;
+  }
+
+  .navigation-menu.active {
+    right: 0;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    display: none;
+    padding-left: 20px;
+  }
+
+  .dropdown-menu.show {
+    display: block;
+  }
+
+  .dropdown-toggle::after {
+    float: right;
+    margin-top: 8px;
+  }
+}
