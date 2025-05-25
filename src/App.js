@@ -9,7 +9,7 @@ import { Footer } from './Footer';
 import room1 from './img/room1.jpg';
 import room2 from './img/room2.jpg';
 import room3 from './img/room3.jpg';
-import { hover } from '@testing-library/user-event/dist/hover';
+
 
 
 
